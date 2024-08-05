@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+
 public class User {
 
     @Id
@@ -72,5 +73,16 @@ public class User {
 
     public void setAuthToken(String authToken) {
         AuthToken = authToken;
+    }
+
+    public User(String userName, String firstName, String lastName, Set<Role> userRoles, String password) {
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userRoles = userRoles;
+        this.password = password;
+    }
+
+    public User() {
     }
 }

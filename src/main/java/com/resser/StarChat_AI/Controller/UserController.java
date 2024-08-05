@@ -1,16 +1,16 @@
 package com.resser.StarChat_AI.Controller;
 
 
+import com.resser.StarChat_AI.Entity.SignInForm;
 import com.resser.StarChat_AI.Entity.User;
 import com.resser.StarChat_AI.Service.UserService;
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.security.RolesAllowed;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/admin")
 public class UserController {
 
     @Autowired
@@ -21,8 +21,8 @@ public class UserController {
         userService.initRolesAndUser();
     }
 
-    @PostMapping("/createNewUser")
-    private User createNewUser (@RequestBody User user){
+    @PostMapping( "/auth/createNewUser")
+    private User createNewUser (@RequestBody SignInForm user) throws Exception {
 
         return  userService.createNewUser(user);
     }
